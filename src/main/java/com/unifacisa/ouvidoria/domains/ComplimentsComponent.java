@@ -12,12 +12,25 @@ import com.unifacisa.ouvidoria.enums.UserTypes;
 import com.unifacisa.ouvidoria.repositories.FeedbackRepository;
 import com.unifacisa.ouvidoria.utils.Formatter;
 
+/**
+ * Componente de elogios
+ *  
+ * @author Darllinson Azevedo
+ */
 @Component
 public class ComplimentsComponent {
 	@Autowired
 	FeedbackRepository feedbackRepository;
 	
-	public void getCompliments(User user) {
+	/**
+	 * Buscar elogios no banco de dados
+	 * 
+	 * @author Darllinson Azevedo
+	 *
+	 * @param user Usuário autenticado
+	 * @return Lista dos elogios
+	 */
+	public List<Feedback> getCompliments(User user) {
 		Formatter.header("Elogios", 100);
 		List<Feedback> compliments;
 		
@@ -34,5 +47,6 @@ public class ComplimentsComponent {
 		}
 		
 		if (compliments.isEmpty()) System.out.println("Nao ha elogios.");
+		return compliments;
 	}
 }

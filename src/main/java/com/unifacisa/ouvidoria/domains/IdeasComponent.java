@@ -12,12 +12,25 @@ import com.unifacisa.ouvidoria.enums.UserTypes;
 import com.unifacisa.ouvidoria.repositories.FeedbackRepository;
 import com.unifacisa.ouvidoria.utils.Formatter;
 
+/**
+ * Componente de ideias
+ *  
+ * @author Darllinson Azevedo
+ */
 @Component
 public class IdeasComponent {
 	@Autowired
 	FeedbackRepository feedbackRepository;
 	
-	public void getIdeas(User user) {
+	/**
+	 * Buscar ideias no banco de dados
+	 * 
+	 * @author Darllinson Azevedo
+	 *
+	 * @param user Usuário autenticado
+	 * @return Lista das ideias
+	 */
+	public List<Feedback> getIdeas(User user) {
 		Formatter.header("Ideias", 100);
 		List<Feedback> ideas;
 		
@@ -34,5 +47,6 @@ public class IdeasComponent {
 		}
 		
 		if (ideas.isEmpty()) System.out.println("Nao ha ideias.");
+		return ideas;
 	}
 }

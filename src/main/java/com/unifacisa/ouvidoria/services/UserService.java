@@ -10,7 +10,7 @@ import com.unifacisa.ouvidoria.repositories.UserRepository;
 import com.unifacisa.ouvidoria.utils.Formatter;
 
 /**
- * Classe para controle de usuários da aplicação
+ * Serviço de usuários da aplicação
  *
  * @author Darllinson Azevedo
  */

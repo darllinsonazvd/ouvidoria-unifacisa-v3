@@ -14,6 +14,11 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Entidade que representa os feedbacks da aplicação
+ * 
+ * @author Darllinson Azevedo
+ */
 @Entity
 @Table(name = "tb_feedbacks")
 @Getter @Setter

@@ -12,12 +12,25 @@ import com.unifacisa.ouvidoria.enums.UserTypes;
 import com.unifacisa.ouvidoria.repositories.FeedbackRepository;
 import com.unifacisa.ouvidoria.utils.Formatter;
 
+/**
+ * Componente de reclamações
+ *  
+ * @author Darllinson Azevedo
+ */
 @Component
 public class ClaimsComponent {
 	@Autowired
 	FeedbackRepository feedbackRepository;
 	
-	public void getClaims(User user) {
+	/**
+	 * Buscar reclamações no banco de dados
+	 * 
+	 * @author Darllinson Azevedo
+	 *
+	 * @param user Usuário autenticado
+	 * @return Lista das reclamações
+	 */
+	public List<Feedback> getClaims(User user) {
 		Formatter.header("Reclamacoes", 100);
 		List<Feedback> claims;
 		
@@ -34,5 +47,6 @@ public class ClaimsComponent {
 		}
 		
 		if (claims.isEmpty()) System.out.println("Nao ha reclamacoes.");
+		return claims;
 	}
 }

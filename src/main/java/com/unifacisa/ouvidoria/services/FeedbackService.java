@@ -17,7 +17,7 @@ import com.unifacisa.ouvidoria.utils.Formatter;
 import com.unifacisa.ouvidoria.utils.Validator;
 
 /**
- * Classe para controle de feedbacks da aplicação
+ * Serviço de feedbacks da aplicação
  *
  * @author Darllinson Azevedo
  */

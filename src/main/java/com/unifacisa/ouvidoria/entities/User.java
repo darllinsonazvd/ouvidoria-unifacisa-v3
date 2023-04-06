@@ -16,6 +16,11 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Entidade que representa os usuaŕios da aplicação
+ * 
+ * @author Darllinson Azevedo
+ */
 @Entity
 @Table(name = "tb_users")
 @Getter @Setter

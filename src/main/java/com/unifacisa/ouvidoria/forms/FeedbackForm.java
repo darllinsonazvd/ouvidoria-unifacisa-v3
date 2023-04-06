@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.unifacisa.ouvidoria.domains.ClaimsComponent;
+import com.unifacisa.ouvidoria.domains.ComplimentsComponent;
+import com.unifacisa.ouvidoria.domains.IdeasComponent;
 import com.unifacisa.ouvidoria.entities.Feedback;
 import com.unifacisa.ouvidoria.entities.User;
 import com.unifacisa.ouvidoria.enums.FeedbackTypes;
@@ -14,7 +17,7 @@ import com.unifacisa.ouvidoria.utils.Formatter;
 import com.unifacisa.ouvidoria.utils.Validator;
 
 /**
- * Classe com métodos de controle da aplicação
+ * Classe com métodos de controle dos feedbacks
  *
  * @author Darllinson Azevedo
  */
@@ -22,6 +25,15 @@ import com.unifacisa.ouvidoria.utils.Validator;
 public class FeedbackForm {
 	@Autowired
 	FeedbackService feedbackService;
+	
+	@Autowired
+	ClaimsComponent claimsComponent;
+	
+	@Autowired
+	ComplimentsComponent complimentsComponent;
+	
+	@Autowired
+	IdeasComponent ideasComponent;
 	
 	private static final List<String> CATEGORIES = Arrays.asList("Reclamacao", "Elogio", "Ideia");
 	
@@ -118,23 +130,26 @@ public class FeedbackForm {
         switch (optionToEdit) {
             case 1 -> {
                 System.out.println("\nQual reclamacao deseja editar?\n");
-                feedbackService.getFeedbacks(userLogged.getId(), FeedbackTypes.CLAIM);
-                int claimId = Validator.readInt("\nNumero da reclamacao: ");
+                List<Feedback> claims = claimsComponent.getClaims(userLogged);
+                if (claims.isEmpty()) return;
                 
+                int claimId = Validator.readInt("\nNumero da reclamacao: ");
                 feedbackService.editFeedback(userLogged, FeedbackTypes.CLAIM, claimId);
             }
             case 2 -> {
                 System.out.println("\nQual elogio deseja editar?\n");
-                feedbackService.getFeedbacks(userLogged.getId(), FeedbackTypes.COMPLIMENT);
+                List<Feedback> compliments = complimentsComponent.getCompliments(userLogged);
+                if (compliments.isEmpty()) return;
+                
                 int complimentId = Validator.readInt("\nNumero do elogio: ");
-
                 feedbackService.editFeedback(userLogged, FeedbackTypes.COMPLIMENT, complimentId);
             }
             case 3 -> {
                 System.out.println("\nQual ideia deseja editar?\n");
-                feedbackService.getFeedbacks(userLogged.getId(), FeedbackTypes.IDEA);
+                List<Feedback> ideas = ideasComponent.getIdeas(userLogged);
+                if (ideas.isEmpty()) return;
+                
                 int ideaId = Validator.readInt("\nNumero da ideia: ");
-
                 feedbackService.editFeedback(userLogged, FeedbackTypes.IDEA, ideaId);
             }
             default -> Formatter.errorEmitter("Categoria nao encontrada!");
