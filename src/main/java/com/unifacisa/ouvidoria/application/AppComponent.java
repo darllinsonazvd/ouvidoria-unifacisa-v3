@@ -14,6 +14,11 @@ import com.unifacisa.ouvidoria.services.UserService;
 import com.unifacisa.ouvidoria.utils.Formatter;
 import com.unifacisa.ouvidoria.utils.Validator;
 
+/**
+ * Componente "main" da aplicação
+ * 
+ * @author Darllinson Azevedo
+ */
 @Component
 public class AppComponent {
 	@Autowired
@@ -24,6 +29,12 @@ public class AppComponent {
 	
 	@Autowired
 	FeedbackForm fbForms;
+	
+	/**
+	 * Método que inicia a aplicação
+	 * 
+	 * @author Darllinson Azevedo
+	 */
 	public void start() {
 		
 		boolean running = true;

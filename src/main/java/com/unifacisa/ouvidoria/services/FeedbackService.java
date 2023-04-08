@@ -39,7 +39,7 @@ public class FeedbackService {
 	IdeasComponent ideasComponent;
 
 	/**
-	 * Recuperar feedbacks do usuário no banco, caso for admin, recupera de todos os usuários
+	 * Recuperar feedbacks do usuário, caso for admin, recupera de todos os usuários
 	 * 
 	 * @author Darllinson Azevedo
 	 *
